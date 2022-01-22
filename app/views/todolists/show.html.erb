@@ -2,3 +2,5 @@
 <p><%= @list.title %></p>
 <h1>本文</h1>
 <p><%= @list.body %></p>
+<h2>画像</h2>
+<%= attachment_image_tag @list, :image, :fill, 300, 300, format: 'jpeg' %>
