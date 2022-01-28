@@ -1,7 +1,23 @@
 <div class="container">
   <div class="row">
       <div class="col-10">
-          
+        <%= form_with model: @book, local :true do |f| %>
+        <div class="row">
+          <div class="form-group">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <%= f.text_area :body %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <%= f.submit "updateBook", class: "btn btn-primary mt-3" %>
+          </div>
+        </div>
+        <% end %>
       </div>
   </div>
 </div>
