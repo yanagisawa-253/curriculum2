@@ -16,8 +16,8 @@
           <tr>
             <!--user_image&user.name記述後book詳細表示-->
             <td>
-              <= @user.image %>
-              <= link_to @user.name, user_path(@user) %>
+              <%= @user.image %>
+              <%= link_to @user.name, user_path(@user) %>
             </td>
             <td><%= book.name %></td>
             <td><%= book.body %></td>
