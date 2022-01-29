@@ -1,18 +1,25 @@
 <!--サイドバー概要　user(prifile) & book(new)-->
-<div class="row">
   <div class="col-2">
+    <h1>user info</h1>
     <table class="table">
       <tbody>
         <tr>
-          <td>name</td>
-          <td><%= user.name %></td>
+          <th><%= attachment_image_tag user, :profile_image %></th>
         </tr>
         <tr>
-          <td>introduction</td>
-          <td><%= user.introdction %></td>
+          <th>name</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= user.introdction %></th>
         </tr>
       </tbody>
     </table>
+    <div class="row">
+      <%= link_to "", edit_user_path(user.id), class: "btn btn-outline-black btn-block fas fa-user-cog" %>
+    </div>
+    <h2>new book</h2>
     <div class="book-new-form">
       <%= form_with model: book, local:true do |f| %>
       <div class="form">
@@ -27,4 +34,3 @@
       <% end %>
     </div>
   </div>
-</div>
