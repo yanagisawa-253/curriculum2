@@ -16,7 +16,7 @@
               <%= @user.image %>
               <%= link_to @user.name, user_path(@user) %>
             </td>
-            <td><%= link_to @book.title, book_path(book.id) %> </td>
+            <td><%= link_to @book.name, book_path(book.id) %> </td>
             <td><%= @book.body %></td>
           </tr>
         </tbody>
