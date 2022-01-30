@@ -13,8 +13,8 @@
           <tbody>
             <!--user_image&user.name記述後book詳細表示-->
             <td>
-              <= @user.image %>
-              <= link_to @user.name, user_path(@user) %>
+              <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg" %>
+              <%= link_to @user.name, user_path(@user) %>
             </td>
             <td><%= @book.name %></td>
             <td><%= @book.body %></td>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :books, dependent: :destroy
-  attachment :image
+  attachment :user_image
   
   # バリデーションの設定
   validates :name, {presence: true, uniqueness: true, length: { minimum:2, maximum: 20 }}

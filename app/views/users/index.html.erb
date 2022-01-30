@@ -14,7 +14,7 @@
           <tbody>
             <tr>
               <td>
-                <%= @user.image %>
+                <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg" %>
                 <%= link_to @user.name, user_path(@user) %>
               </td>
               <td><%= user.introduction %></td>
