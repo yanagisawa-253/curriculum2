@@ -1,10 +1,10 @@
 <!--サイドバー概要　user(prifile) & book(new)-->
-  <div class="col-2">
+  <div class="col-2 mt-5">
     <h1>user info</h1>
     <table class="table">
       <tbody>
         <tr>
-          <th><%= attachment_image_tag user, :profile_image %></th>
+          <th><%= attachment_image_tag user, :user_image %></th>
         </tr>
         <tr>
           <th>name</th>
@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <th>introduction</th>
-          <th><%= user.introdction %></th>
+          <th><%= user.introduction %></th>
         </tr>
       </tbody>
     </table>
@@ -21,14 +21,14 @@
     </div>
     <h2>new book</h2>
     <div class="book-new-form">
-      <%= form_with model: book, local:true do |f| %>
+      <%= form_with model: @book, local:true do |f| %>
       <div class="form">
         <%= f.text_field :name %>
       </div>
-      <div class="form">
+      <div class="form mt-2">
         <%= f.text_area :body %>
       </div>
-      <div class="form">
+      <div class="form mt-2">
         <%= f.submit "CreateBook" %>
       </div>
       <% end %>
