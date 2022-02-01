@@ -12,13 +12,13 @@
           </tr>
         </theard>
         <tbody>
-          <% @items.each do || %>
+          <% @items.each do |item| %>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.price %></td>
+            <td><%= item.genre %></td>
+            <td><%= item.is_active %></td>
           </tr>
         </dbody>
       </table>
