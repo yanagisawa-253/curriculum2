@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
       flash.now[:notice] = "not create"
       render 'new'
       redirect_to admin_items_path
-  end
+    end
   end
   
   def edit
