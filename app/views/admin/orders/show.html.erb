@@ -1,7 +1,77 @@
-<div class="container">
+<div class="containar">
   <div class="row">
-    <div class="col-12 mt-5 mb-5">
-      
+    <div class="col-10 offset-">
+      <table class="table">
+        <h2>注文履歴詳細</h2>
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td><%= order.name %></td>
+          </tr>
+          <tr>
+            <td>注文日</td>
+            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td>発送先</td>
+            <td><%= order.address %></td>
+          </tr>
+          <tr>
+            <td>支払い方法</td>
+            <td><%= order.pay_type %></td>
+          </tr>
+          <tr>
+            <td>注文ステータス</td>
+            <td><%= f.select :order_status, [['入金待ち',1], ['入金確認',2], ['製作中',3], ['発送準備中',4], ['発送済み',5]] %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-7 ml-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= (order_item.item.price * 1.1).floor %></td>
+            <td><%= order_item.amount %></td>
+            <td><%= (order_item.item.price * order_item.amount *1.1).floor %></td>
+            <td><%= f.submit "更新", class: "btn btn-success" %></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+      <div class="table table--borderless align-self-end">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @total %>円</td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td>800円</td>
+          </tr>
+          <tr>
+            <td>請求合計金額</td>
+            <td><%= @total + 800 %>円</td>
+          </tr>
+        </tbody>
+      </div>
+    </div>
+  </div>
+</div> 
