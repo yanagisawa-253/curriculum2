@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about' => 'homes#about'
   
+  resources :items
+  resources :cart_items
+
+  
   namespace :admin do
     get 'admin/homes/top' => 'admin/homes#top'
     resources :items
