@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="cart-items col-12 mt-5 mb-5">
+      <h3 class="top-text col-8">ショッピングカート</h3>
+      <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger mb-3" %>
+      <table class="table border-line">
+        <theard>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </theard>
+        <% @cart_items.each do |cart_item| %>
+        <tbody>
+          <tr>
+            <!--itemとのアソシエーション-->
+            <td><%= cart_item.item.name %></td>
+            <!--modelにて定義すること-->
+            <td><%= cart_item.item.with_tax_price %></td>
+            <!--手動変更ができるように-->
+            <td>
+              <%= form_for cart_item, url: cart_item_path(cart_item) do |f| %>
+                <%= f.number_field :amount, min:1, max: 10 %><%= f.submit "更新", class: "btn btn-success mb-2" %>
+              <% end %>
+            </td>
+            <td><%= cart_item.sum_of_price %></td>
+            <td><%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

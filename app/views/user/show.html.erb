@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-5 mb-5">
+      <h1>マイページ</h1>
+      <div class="top-text">
+        <p class="col-3">基本情報</p>
+        <%= link_to "編集する", edit_user_path(@user), class: "col-3 btn btn-success ml-3" %>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>氏名</td>
+            <td><%= @user.full_name %></td>
+          </tr>
+          <tr>
+            <td>カナ</td>
+            <td><%= @user.full_name_kana %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @user.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @user.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td<%= @user.email %>></td>
+          </tr>
+        </tbody>
+      </table>
+      <P>配送先</P><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary mt-5 ml-3" %>
+      <P>注文履歴</P><%= link_to "一覧を見る", orders_path, class: "btn btn-primary mt-5 ml-3" %>
+    </div>
+  </div>
+</div>
