@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   resources :items
   resources :cart_items
+  resources :addresses
   resources :users do
     get '/unsubscribe' => 'customers#unsubscribe'
     patch '/withdraw' => 'customers#withdraw', as: 'withdraw_customer'

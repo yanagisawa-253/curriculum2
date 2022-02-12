@@ -1,26 +1,26 @@
 class Admin::ItemsController < ApplicationController
+  
   def index
     @items = Item.all
-  end
-  
-  def show
-    @item = Item.find(params[:id])
-  end
-  
+  end 
+
   def new
     @item = Item.new
   end
   
   def create
-    @item.new(item_params)
+    @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "create"
       redirect_to admin_item_path(@item.id)
     else
       flash.now[:notice] = "not create"
       render 'new'
-      redirect_to admin_items_path
     end
+  end
+  
+  def show
+    @item = Item.find(params[:id])
   end
   
   def edit
