@@ -1,25 +1,25 @@
 class UserController < ApplicationController
     
   def show
-    @customer =Customer.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def edit
-    @customer =Customer.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def update
-    @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
-      redirect_to public_customer_path(@customer.id)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to public_user_path(@user.id)
     else
       render 'edit'
     end
   end
   
   def withdraw
-    @customer = Customer.find(params[:customer_id])
-    if @customer.update(is_active: false)
+    @user = User.find(params[:user_id])
+    if @user.update(is_active: false)
       reset_session
     end
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。" 
@@ -28,12 +28,12 @@ class UserController < ApplicationController
   
     # 退会の仕方について
   def unsubscribe
-    @customer = current_customer.id
+    @user = current_user.id
   end
   
   private
-  def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code,
+  def user_params
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code,
                                      :address, :telephone_number, :is_active)
   end
 end
